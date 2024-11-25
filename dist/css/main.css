@@ -1,0 +1,42 @@
+* {
+  direction: rtl;
+  padding: 0;
+  margin: 0; }
+
+body {
+  height: 100%;
+  overflow-y: hidden; }
+
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100%; }
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px; } }
+@media (min-width: 992px) {
+  .container {
+    width: 970px; } }
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px; } }
+.container > div {
+  min-width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  transition: 300ms;
+  left: 0;
+  border: 1px solid #ccc; }
+
+.up {
+  top: -100vh; }
+
+.middle {
+  top: 0; }
+
+.down {
+  top: 100vh; }
+
+/*# sourceMappingURL=main.css.map */
