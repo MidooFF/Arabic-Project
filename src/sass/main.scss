@@ -1,51 +1,104 @@
 * {
-    direction: rtl;
-    padding: 0;
-    margin: 0;
+  direction: rtl;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    height: 100%;
-    overflow-y: hidden;
+  height: 100%;
+  overflow-y: hidden;
+  background-image: url(../../assets/img/background.jpg);
+  position: relative;
+  z-index: 0;
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100vh;
+    background-color: #00000052;
+    z-index: 1;
+    position: absolute;
+  }
 }
 
 .container {
-	padding: 0 15px;
-	margin: 0 auto;
-    position: relative;
-    min-height: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100%;
+  z-index: 2;
 }
 @media (min-width: 768px) {
-	.container {
-		width: 750px;
-	}
+  .container {
+    width: 750px;
+  }
 }
 @media (min-width: 992px) {
-	.container {
-		width: 970px;
-	}
+  .container {
+    width: 970px;
+  }
 }
 @media (min-width: 1200px) {
-	.container {
-		width: 1170px;
-	}
+  .container {
+    width: 1170px;
+  }
 }
 
 .container > div {
-    min-width: 100%;
-    min-height: 100vh;
-    position: absolute;
-    transition: 300ms;
-    left: 0;
-    border: 1px solid #ccc;
+  min-width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  transition: 300ms;
+  left: 0;
 }
 
 .up {
-    top: -100vh;
+  top: -100vh;
 }
 .middle {
-    top: 0;
+  top: 0;
 }
 .down {
-    top: 100vh;
+  top: 100vh;
+}
+
+div[data-index="0"] {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  > h1 {
+    font-size: 60px;
+    margin: 10px;
+    color: #d73636;
+  }
+  .student-made {
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    h3 {
+      font-size: 30px;
+    }
+    h4 {
+      font-size: 20px;
+    }
+  }
+}
+
+div[data-index="1"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-direction: row-reverse;
+  .text {
+    font-size: 30px;
+  }
+  .image img {
+    height: 50vh;
+    transform: scaleX(-1);
+  }
 }

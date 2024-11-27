@@ -1,17 +1,29 @@
 * {
   direction: rtl;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  box-sizing: border-box; }
 
 body {
   height: 100%;
-  overflow-y: hidden; }
+  overflow-y: hidden;
+  background-image: url(../../assets/img/background.jpg);
+  position: relative;
+  z-index: 0; }
+  body::before {
+    content: "";
+    width: 100%;
+    height: 100vh;
+    background-color: #00000052;
+    z-index: 1;
+    position: absolute; }
 
 .container {
   padding: 0 15px;
   margin: 0 auto;
   position: relative;
-  min-height: 100%; }
+  min-height: 100%;
+  z-index: 2; }
 
 @media (min-width: 768px) {
   .container {
@@ -27,8 +39,7 @@ body {
   min-height: 100vh;
   position: absolute;
   transition: 300ms;
-  left: 0;
-  border: 1px solid #ccc; }
+  left: 0; }
 
 .up {
   top: -100vh; }
@@ -38,5 +49,38 @@ body {
 
 .down {
   top: 100vh; }
+
+div[data-index="0"] {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  div[data-index="0"] > h1 {
+    font-size: 60px;
+    margin: 10px;
+    color: #d73636; }
+  div[data-index="0"] .student-made {
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 20px; }
+    div[data-index="0"] .student-made h3 {
+      font-size: 30px; }
+    div[data-index="0"] .student-made h4 {
+      font-size: 20px; }
+
+div[data-index="1"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-direction: row-reverse; }
+  div[data-index="1"] .text {
+    font-size: 30px; }
+  div[data-index="1"] .image img {
+    height: 50vh;
+    transform: scaleX(-1); }
 
 /*# sourceMappingURL=main.css.map */
