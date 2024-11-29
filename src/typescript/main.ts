@@ -5,6 +5,28 @@ let slideOne = document.querySelector(".up") as HTMLDivElement;
 let slideTwo = document.querySelector(".middle") as HTMLDivElement;
 let slideThree = document.querySelector(".down") as HTMLDivElement;
 
+class GetHouse {
+  public house;
+  public words;
+  public explain;
+  public idea;
+  public img;
+
+  constructor(
+    house: string,
+    words: string[][],
+    explain: string,
+    idea: string,
+    img: string
+  ) {
+    this.house = house;
+    this.words = words;
+    this.explain = explain;
+    this.idea = idea;
+    this.img = img;
+  }
+}
+
 body.addEventListener("keypress", function (e) {
   if (e.key === "w") {
     if (nextS < test.length) {
@@ -93,7 +115,7 @@ body.addEventListener("keypress", function (e) {
     slideTwo.innerHTML = `
     <div class="image">
           <img
-            src="assets/img/An Arabian man in the year 1029 saying goodbye to his friends because he is travelling.jpg"
+            src="assets/img/intro.jpg"
             alt=""
           />
         </div>
@@ -108,6 +130,21 @@ body.addEventListener("keypress", function (e) {
   if (currentS === 3) {
     slideTwo.innerHTML = `  <h2>لا تعذليه</h2>
         <div class="poem">
+        <div class="row0">
+        <h3>1.</h3>
+<h3>2.</h3>
+<h3>3.</h3>
+<h3>4.</h3>
+<h3>5.</h3>
+<h3>6.</h3>
+<h3>7.</h3>
+<h3>8.</h3>
+<h3>9.</h3>
+<h3>10.</h3>
+<h3>11.</h3>
+<h3>12.</h3>
+<h3>13.</h3>
+        </div>
           <div class="row1">
             <h3>لا تَعذَلِيه فَإِنَّ العَذلَ يُولِعُهُ</h3>
             <h3>يَكفِيهِ مِن لَوعَةِ التَشتِيتِ أَنَّ لَهُ</h3>
@@ -140,6 +177,98 @@ body.addEventListener("keypress", function (e) {
           </div>
         </div>`;
   }
+
+  if (currentS > 3) {
+    let house = houses[currentS - 4];
+
+    let houseDiv = document.createElement("div");
+    houseDiv.className = "houseDiv";
+
+    let partOneH2 = document.createElement("h2");
+    partOneH2.className = "part-one";
+    let partTwoH2 = document.createElement("h2");
+    partTwoH2.className = "part-two";
+
+    let partOne = house.house.split(",")[0];
+    let partTwo = house.house.split(",")[1];
+
+    partOne = partOne.split(" ");
+    partTwo = partTwo.split(" ");
+
+    for (let i = 0; i < partOne.length; i++) {
+      let span = document.createElement("span") as HTMLSpanElement;
+      span.innerHTML = partOne[i] + " ";
+      if (house.words[0].includes(partOne[i])) {
+        span.setAttribute(
+          "data-meaning",
+          house.words[1][house.words[0].indexOf(partOne[i])]
+        );
+        span.classList.add("have-meaning");
+      }
+      partOneH2.appendChild(span);
+    }
+    for (let i = 0; i < partTwo.length; i++) {
+      let span = document.createElement("span");
+      span.innerHTML = partTwo[i] + " ";
+      if (house.words[0].includes(partTwo[i])) {
+        span.setAttribute(
+          "data-meaning",
+          house.words[1][house.words[0].indexOf(partTwo[i])]
+        );
+        span.classList.add("have-meaning");
+      }
+      partTwoH2.appendChild(span);
+    }
+
+    houseDiv.appendChild(partOneH2);
+    houseDiv.appendChild(partTwoH2);
+
+    slideTwo.classList.add("house");
+    slideTwo.innerHTML = `<div class="image">
+    <img src="${house.img}"/>
+    </div>
+        <div class="text">
+          
+        <div class="houseDiv">
+        ${houseDiv.innerHTML}
+        </div>
+          <div class="explain">
+            <h2>شرح البيت:</h2>
+            <p>${house.explain}</p>
+          </div>
+          <div class="idea">
+            <h2>فكرة البيت:</h2>
+            <p>${house.idea}</p>
+          </div>
+          <div class="word-meaning">
+            <h2></h2>
+            <p></p>
+          </div>
+        </div>`;
+  }
+
+  slideTwo.addEventListener("click", function (e: any) {
+    if (e.target.getAttribute("data-meaning")) {
+      let wordH2 = document.querySelector(
+        ".middle .text .word-meaning h2"
+      ) as HTMLHeadingElement;
+      let meaningP = document.querySelector(
+        ".middle .text .word-meaning p"
+      ) as HTMLParagraphElement;
+      let wordMeaningDiv = document.querySelector(
+        ".middle .text .word-meaning"
+      ) as HTMLDivElement;
+
+      wordH2.textContent = e.target.textContent + ":";
+      meaningP.textContent = e.target.getAttribute("data-meaning");
+      if (wordMeaningDiv.classList.contains("active")) {
+        wordMeaningDiv.classList.remove("active");
+        wordMeaningDiv.classList.add("active");
+      } else {
+        wordMeaningDiv.classList.add("active");
+      }
+    }
+  });
 });
 
 let currentS: number = 0;
@@ -147,3 +276,18 @@ let nextS: number = 1;
 let prevS: number = -1;
 
 let test = [1, 2, 3, 4, 5, 6, 7];
+
+let houses: any = [];
+houses.push(
+  new GetHouse(
+    " لا تَعذَلِيه فَإِنَّ العَذلَ يُولِعُه,قَد قَلتِ حَقاً وَلَكِن لَيسَ يَسمَعُهُ",
+    [
+      ["تَعذَلِيه", "العَذلَ", "يُولِعُه"],
+      ["لا تلوميه", "يزيده تعلقا أو يزيده شوقا", "الولع: الحب الشديد"],
+    ],
+    `يناجي الشاعر نفسه ويطلب منها ألا تطيل في العتب واللوم لأن العتب يزيد عذابه 
+    ويعلم أنها تقول الحق لكنه في حالة صراع بين نداء الروح والواقع`,
+    "صراع الشاعر الشديد بين روحه والواقع الحر",
+    "../../assets/img/house1.jpg"
+  )
+);

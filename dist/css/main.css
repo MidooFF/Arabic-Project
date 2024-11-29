@@ -62,10 +62,9 @@ div[data-index="0"] {
     color: #d73636; }
   div[data-index="0"] .student-made {
     text-align: right;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 20px; }
+    padding: 20px;
+    margin-top: 50px;
+    text-align: center; }
     div[data-index="0"] .student-made h3 {
       font-size: 30px; }
     div[data-index="0"] .student-made h4 {
@@ -115,12 +114,86 @@ div [data-index="3"] {
     font-size: 30px;
     color: #d73636;
     margin-bottom: 20px; }
+  div [data-index="3"] .row1 {
+    margin-left: 60px; }
   div [data-index="3"] .poem {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 60px;
     font-size: 22px;
     line-height: 1.7; }
+
+.house {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-direction: row-reverse; }
+  .house .image {
+    max-width: 30%; }
+    .house .image img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 30px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; }
+  .house .text .houseDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border-bottom: 4px solid #ceb73c;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 60px; }
+    .house .text .houseDiv span.have-meaning {
+      transition: 300ms;
+      cursor: pointer; }
+      .house .text .houseDiv span.have-meaning:hover {
+        color: #d73636; }
+  .house .text .explain {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 40px; }
+    .house .text .explain h2 {
+      color: #357935;
+      white-space: nowrap;
+      margin-left: 10px; }
+    .house .text .explain p {
+      font-size: 22px; }
+  .house .text .idea {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    align-items: flex-start; }
+    .house .text .idea h2 {
+      color: #357935;
+      white-space: nowrap;
+      margin-left: 10px; }
+    .house .text .idea p {
+      font-size: 22px; }
+  .house .text .word-meaning {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    align-items: flex-start;
+    transition: 300ms;
+    margin-bottom: -20px;
+    opacity: 0;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 10px;
+    border-radius: 20px;
+    width: fit-content; }
+    .house .text .word-meaning.active {
+      margin-bottom: 0;
+      opacity: 1; }
+    .house .text .word-meaning h2 {
+      color: #d73636;
+      white-space: nowrap;
+      margin-left: 10px; }
+    .house .text .word-meaning p {
+      font-size: 22px; }
 
 /*# sourceMappingURL=main.css.map */
